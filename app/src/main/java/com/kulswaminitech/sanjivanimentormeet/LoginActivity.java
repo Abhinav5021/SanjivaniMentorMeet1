@@ -42,11 +42,11 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
 //                    new CheckLoginTask().execute(user, pass);
                     if (user.equals("2100340265") && pass.equals("Skbp@145")) {
-                        Toast.makeText(LoginActivity.this, "Login Successful as "+SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login Successful as " + SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         Bundle args = new Bundle();
-                        args.putString("User",SelectedUser);
-                        args.putString("Enrollment",user);
+                        args.putString("User", SelectedUser);
+                        args.putString("Enrollment", user);
                         intent.putExtras(args);
                         startActivity(intent);
                         finish();
@@ -57,32 +57,32 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    private class CheckLoginTask extends AsyncTask<String, Void, Boolean> {
-        @Override
-        protected Boolean doInBackground(String... params) {
-            String user = params[0];
-            String pass = params[1];
-            return DatabaseOperations.checkLogin(user, pass);
-        }
-
-        @Override
-        protected void onPostExecute(Boolean isValidLogin) {
-            if (isValidLogin) {
-                Toast.makeText(LoginActivity.this, "Login Successful as " + SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                Bundle args = new Bundle();
-                args.putString("User", SelectedUser);
-                args.putString("Enrollment", user);
-                intent.putExtras(args);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-}
+} //-------------------
+//    private class CheckLoginTask extends AsyncTask<String, Void, Boolean> {
+//        @Override
+//        protected Boolean doInBackground(String... params) {
+//            String user = params[0];
+//            String pass = params[1];
+//            return DatabaseOperations.checkLogin(user, pass);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Boolean isValidLogin) {
+//            if (isValidLogin) {
+//                Toast.makeText(LoginActivity.this, "Login Successful as " + SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                Bundle args = new Bundle();
+//                args.putString("User", SelectedUser);
+//                args.putString("Enrollment", user);
+//                intent.putExtras(args);
+//                startActivity(intent);
+//                finish();
+//            } else {
+//                Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//}
 
 //if (user.isEmpty() || pass.isEmpty()) {
 //        Toast.makeText(LoginActivity.this, "All fields Required..!", Toast.LENGTH_SHORT).show();
