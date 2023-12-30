@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">SanjivaniMentorMeet</string>
+    <string name="app_name">Student Mentoring App</string>
+    <string name="mentorIncharge">MENTOR INCHARGE / HOD</string>
+    <string name="mentor">MENOTR</string>
+    <string name="student">STUDENT</string>
+    <string name="choosePossition">CHOOSE YOUR POSSITION</string>
+    <!--    Drawer open close-->
+    <string name="drawerOpen">Open navigation drawer</string>
+    <string name="drawerClose">Close navigation drawer</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
