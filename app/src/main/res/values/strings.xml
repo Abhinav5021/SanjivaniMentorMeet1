@@ -3,7 +3,7 @@
     <string name="mentorIncharge">MENTOR INCHARGE / HOD</string>
     <string name="mentor">MENOTR</string>
     <string name="student">STUDENT</string>
-    <string name="choosePossition">CHOOSE YOUR POSSITION</string>
+    <string name="choosePossition">SIGN IN AS</string>
     <!--    Drawer open close-->
     <string name="drawerOpen">Open navigation drawer</string>
     <string name="drawerClose">Close navigation drawer</string>

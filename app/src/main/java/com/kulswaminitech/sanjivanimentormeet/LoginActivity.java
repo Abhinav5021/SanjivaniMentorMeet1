@@ -40,7 +40,19 @@ public class LoginActivity extends AppCompatActivity {
                 if (user.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "All fields Required..!", Toast.LENGTH_SHORT).show();
                 } else {
-                    new CheckLoginTask().execute(user, pass);
+//                    new CheckLoginTask().execute(user, pass);
+                    if (user.equals("2100340265") && pass.equals("Skbp@145")) {
+                        Toast.makeText(LoginActivity.this, "Login Successful as "+SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Bundle args = new Bundle();
+                        args.putString("User",SelectedUser);
+                        args.putString("Enrollment",user);
+                        intent.putExtras(args);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -103,16 +115,5 @@ public class LoginActivity extends AppCompatActivity {
 //                        Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
 //                    }
 
-//                    if (user.equals("2100340265") && pass.equals("Skbp@145")) {
-//                        Toast.makeText(LoginActivity.this, "Login Successful as "+SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        Bundle args = new Bundle();
-//                        args.putString("User",SelectedUser);
-//                        args.putString("Enrollment",user);
-//                        intent.putExtras(args);
-//                        startActivity(intent);
-//                        finish();
-//                    } else {
-//                        Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
-//                    }
+
 //        }
