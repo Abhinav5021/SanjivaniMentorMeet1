@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 //        }
 //    }
 //}
-//------------------------------
+//-------------------------------
 //if (user.isEmpty() || pass.isEmpty()) {
 //        Toast.makeText(LoginActivity.this, "All fields Required..!", Toast.LENGTH_SHORT).show();
 //        } else {
