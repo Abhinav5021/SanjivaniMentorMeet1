@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity
 //        navigationView.getHeaderView(R.layout.header);
 
         View header = navigationView.getHeaderView(0);
-
 //        profilename = (TextView) header.findViewById(R.id.header_username);
 //        enrollmentNo = (TextView) header.findViewById(R.id.header_enrollment_no);
 //        loggedInStatus = (TextView) header.findViewById(R.id.header_login_Status);
