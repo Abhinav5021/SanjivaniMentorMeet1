@@ -1,119 +1,139 @@
 package com.kulswaminitech.sanjivanimentormeet;
 
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 
 public class LoginActivity extends AppCompatActivity {
-    //    public MyDBHelper DB;
-    public EditText username;
-    public TextInputEditText password;
-    public Button loginbtn;
-    public String SelectedUser;
-    public String user, pass;
+    EditText t1,t2;
+    TextView text;
+    public static String fix="";
+    Button login;
+    private  static  final  String apiurl="http://192.168.190.72/MentorMeetingApp/login_student.php";
 
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        login=findViewById(R.id.login);
+        text=findViewById(R.id.text);
+        //taking values form fristActivity
+        String admin=getIntent().getStringExtra("AdminName");
+        String student=getIntent().getStringExtra("StudentName");
+        String staff=getIntent().getStringExtra("StaffName");
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        loginbtn = findViewById(R.id.loginbtn);
-//        DB = new MyDBHelper(this);
 
-//        Getting USER from selectUserActivity
-        SelectedUser = getIntent().getExtras().getString("UserStatus");
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                user = username.getText().toString().trim();
-                pass = password.getText().toString().trim();
-                if (user.isEmpty() || pass.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "All fields Required..!", Toast.LENGTH_SHORT).show();
-                } else {
-//                    new CheckLoginTask().execute(user, pass);
-                    if (user.equals("2100340265") && pass.equals("Skbp@145")) {
-                        Toast.makeText(LoginActivity.this, "Login Successful as " + SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        Bundle args = new Bundle();
-                        args.putString("User", SelectedUser);
-                        args.putString("Enrollment", user);
-                        intent.putExtras(args);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
-                    }
+        if( admin != null)
+        {
+            fix= getIntent().getStringExtra("AdminName");
+            Toast.makeText(this, fix, Toast.LENGTH_SHORT).show();
+//            text.setText(fix);
+        }
+        else if(staff != null )
+        {
+            fix=getIntent().getStringExtra("StaffName");
+            Toast.makeText(this, fix, Toast.LENGTH_SHORT).show();
+        } else if (student != null) {
+            fix=getIntent().getStringExtra("StudentName");
+            Toast.makeText(this, fix, Toast.LENGTH_SHORT).show();
+        }
+
+
+//        checkexistenceuser();
+        checklogoutmsg(text);
+    }
+    public  void login_process(View view)
+    {
+        t1=(EditText)findViewById(R.id.t1);
+        t2=(EditText) findViewById(R.id.t2);
+        text=(TextView)findViewById(R.id.text);
+        String t=t1.getText().toString();
+        String qry="?t1="+t1.getText().toString().trim()+"&t2="+t2.getText().toString().trim()+"&table="+fix;
+        class dbproces extends AsyncTask<String,Void,String>
+        {
+            protected void onPostExecute(String data)
+            {
+                if(data.equals("found"))
+                {
+                    SharedPreferences sp=getSharedPreferences("credentials",MODE_PRIVATE);
+                    SharedPreferences.Editor editor=sp.edit();
+//                    editor.putString("uname",t1.getText().toString());
+                    //changes
+                    editor.putString("uname",t1.getText().toString());
+
+                    editor.commit();
+                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(LoginActivity.this, MainActivity.class);
+//                    i.putExtra("Enrollment",t);/
+                    i.putExtra("admin",fix);
+                    startActivity(i);
+                    finish();
+                }
+                else{
+                    t1.setText("");
+                    t2.setText("");
+                    Toast.makeText(LoginActivity.this, data, Toast.LENGTH_SHORT).show();
+                    text.setText(data);
                 }
             }
-        });
+            @Override
+            protected String doInBackground(String... strings) {
+                String furl=strings[0];
+                try {
+                    URL url=new URL(furl);
+                    HttpURLConnection conn=(HttpURLConnection) url.openConnection();
+                    BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return  br.readLine();
+                }catch (Exception e)
+                {
+                    return  e.getMessage();
+                }
+            }
+        }
+        dbproces obj=new dbproces();
+        obj.execute(apiurl+qry);
     }
-} //-------------------
-//    private class CheckLoginTask extends AsyncTask<String, Void, Boolean> {
-//        @Override
-//        protected Boolean doInBackground(String... params) {
-//            String user = params[0];
-//            String pass = params[1];
-//            return DatabaseOperations.checkLogin(user, pass);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Boolean isValidLogin) {
-//            if (isValidLogin) {
-//                Toast.makeText(LoginActivity.this, "Login Successful as " + SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                Bundle args = new Bundle();
-//                args.putString("User", SelectedUser);
-//                args.putString("Enrollment", user);
-//                intent.putExtras(args);
-//                startActivity(intent);
-//                finish();
-//            } else {
-//                Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
-//}
-//-------------------------------
-//if (user.isEmpty() || pass.isEmpty()) {
-//        Toast.makeText(LoginActivity.this, "All fields Required..!", Toast.LENGTH_SHORT).show();
-//        } else {
-//        String userFromDB = "";
-//        String passwordFromDB = "";
-//        try {
-//        Class.forName("oracle.jdbc.driver.OracleDriver");
-//        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "system");
-//        Statement stmt = conn.createStatement();
-//        ResultSet rs = stmt.executeQuery("SELECT * FROM LOGIN WHERE USERNAME=" +" and PASSWORD="+pass);
-//        while(rs.next()) {
-//        userFromDB = rs.getString(1); //username
-//        passwordFromDB = rs.getString(2); //password
-//        }
-//        conn.close();
-//        }catch (Exception e){
-//        Toast.makeText(LoginActivity.this, e.toString(),Toast.LENGTH_SHORT).show();
-//        }
-//                    if(user.equals(userFromDB) && pass.equals(passwordFromDB)){
-//                        Toast.makeText(LoginActivity.this, "Login Successful as "+SelectedUser.toUpperCase(), Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        Bundle args = new Bundle();
-//                        args.putString("User",SelectedUser);
-//                        args.putString("Enrollment",user);
-//                        intent.putExtras(args);
-//                        startActivity(intent);
-//                            finish();
-//                    } else {
-//                        Toast.makeText(LoginActivity.this, "Invalid Credentials..!", Toast.LENGTH_SHORT).show();
-//                    }
+    void checkexistenceuser()
+    {
+        SharedPreferences sp=getSharedPreferences("credentials",MODE_PRIVATE);
+        if(sp.contains("uname"))
+        {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
+        else{
+            Toast.makeText(this, "plz login", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-
-//        }
+    public void  checklogoutmsg(View view)
+    {
+        text=(TextView)findViewById(R.id.text);
+        SharedPreferences sp=getSharedPreferences("credentials",MODE_PRIVATE);
+        if(sp.contains("msg"))
+        {
+            text.setText(sp.getString("msg",""));
+            SharedPreferences.Editor ed=sp.edit();
+            ed.remove("msg");
+            ed.commit();
+        }
+    }
+}

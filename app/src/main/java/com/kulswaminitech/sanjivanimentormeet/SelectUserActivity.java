@@ -1,71 +1,60 @@
 package com.kulswaminitech.sanjivanimentormeet;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectUserActivity extends AppCompatActivity {
-    Button mentorIncharge,mentor,student;
-//    SelectUserActivity activity;
 
+    Button Admin,Student,Staff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user);
+        Admin=findViewById(R.id.admin);
+        Student=findViewById(R.id.student);
+        Staff=findViewById(R.id.staff);
+        String admin=Admin.getText().toString();
+        String student=Student.getText().toString();
+        String staff=Staff.getText().toString();
 
-        mentorIncharge = findViewById(R.id.mentorInchargeBtn);
-        mentor = findViewById(R.id.mentorBtn);
-        student = findViewById(R.id.studentBtn);
+//        Toast.makeText(FristActivity.this, admin, Toast.LENGTH_SHORT).show();
 
-        mentorIncharge.setOnClickListener(new View.OnClickListener() {
+        Admin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String user = "Mentor Incharge ";
-                Intent intent = new Intent(SelectUserActivity.this,LoginActivity.class);
-                Bundle args = new Bundle();
-                args.putString("UserStatus",user);
-                intent.putExtras(args);
-//                intent.putExtra("UserStatus",user);
-                startActivity(intent);
-                Toast.makeText(SelectUserActivity.this,"Enter Login Credentials of : "+user,Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                String admin=Admin.getText().toString();
 
-//                Activity activity = new SelectUserActivity();
-//                Bundle args = new Bundle();
-//                args.putString("user","MentorIncharge");
-//                activity.setArguments(args);
+                Intent i=new Intent(SelectUserActivity.this, LoginActivity.class);
+                i.putExtra("AdminName",admin);
+                startActivity(i);
+
+            }
+        });
+        Student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String student=Student.getText().toString();
+                Intent i=new Intent(SelectUserActivity.this, LoginActivity.class);
+                i.putExtra("StudentName",student);
+                startActivity(i);
+            }
+        });
+        Staff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String staff=Staff.getText().toString();
+                Intent i=new Intent(SelectUserActivity.this, LoginActivity.class);
+                i.putExtra("StaffName",staff);
+                startActivity(i);
             }
         });
 
-        mentor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user = "Mentor ";
-                Intent intent = new Intent(SelectUserActivity.this,LoginActivity.class);
-                Bundle args = new Bundle();
-                args.putString("UserStatus",user);
-                intent.putExtras(args);
-//                intent.putExtra("UserStatus",user);
-                startActivity(intent);
-                Toast.makeText(SelectUserActivity.this,"Enter Login Credentials of : "+user,Toast.LENGTH_SHORT).show();
-            }
-        });
-        student.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user = "Student ";
-                Intent intent = new Intent(SelectUserActivity.this,LoginActivity.class);
-//                intent.putExtra("UserStatus",user);
-                Bundle args = new Bundle();
-                args.putString("UserStatus",user);
-                intent.putExtras(args);
-                startActivity(intent);
-                Toast.makeText(SelectUserActivity.this,"Enter Login Credentials of : "+user,Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 }

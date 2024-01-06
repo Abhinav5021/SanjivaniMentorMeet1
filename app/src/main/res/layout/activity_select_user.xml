@@ -36,43 +36,85 @@
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/choosePossition"
+                android:text="Login"
+                android:textAllCaps="true"
                 android:textAlignment="center"
-                android:textColor="@color/purplelogin"
+                android:textColor="@color/primaryDark"
                 android:textSize="30sp"
                 android:textStyle="bold" />
-
             <Button
-                android:id="@+id/mentorInchargeBtn"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/black"
-                android:text="@string/mentorIncharge"
+                android:text="admin"
+                android:id="@+id/admin"
                 android:textColor="#fff"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
-            <Button
-                android:id="@+id/mentorBtn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/black"
-                android:text="@string/mentor"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
 
-            <Button
-                android:id="@+id/studentBtn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:textAllCaps="false"
+                android:textSize="30dp"
+                app:cornerRadius="20dp"
                 android:backgroundTint="@color/black"
-                android:text="@string/student"
+                android:layout_marginBottom="30dp"
+                />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+
                 android:textColor="#fff"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
+                android:textAllCaps="false"
+                android:textSize="30dp"
+                android:backgroundTint="@color/black"
+                android:id="@+id/staff"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                app:cornerRadius="20dp"
+                android:text="staff"
+                />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/black"
+                android:textColor="#fff"
+                android:id="@+id/student"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textAllCaps="false"
+
+                android:text="student1"
+                app:cornerRadius="20dp"
+                />
+
+<!--            <Button-->
+<!--                android:id="@+id/mentorInchargeBtn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:backgroundTint="@color/black"-->
+<!--                android:text="admin"-->
+<!--                android:textColor="#fff"-->
+<!--                android:textSize="18sp"-->
+<!--                app:cornerRadius="20dp" />-->
+<!--            <Button-->
+<!--                android:id="@+id/mentorBtn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:backgroundTint="@color/black"-->
+<!--                android:text="@string/mentor"-->
+<!--                android:textColor="#fff"-->
+<!--                android:textSize="18sp"-->
+<!--                app:cornerRadius="20dp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/studentBtn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:backgroundTint="@color/black"-->
+<!--                android:text="@string/student"-->
+<!--                android:textColor="#fff"-->
+<!--                android:textSize="18sp"-->
+<!--                app:cornerRadius="20dp" />-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
