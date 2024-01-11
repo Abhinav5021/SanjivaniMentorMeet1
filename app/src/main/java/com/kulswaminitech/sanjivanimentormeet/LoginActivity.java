@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView text;
     public static String fix="";
     Button login;
-    private  static  final  String apiurl="http://192.168.190.72/MentorMeetingApp/login_student.php";
+    private  static  final  String apiurl="http://192.168.249.72/MentorMeetingApp/login_student.php";
 
 
 

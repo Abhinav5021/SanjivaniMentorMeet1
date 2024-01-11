@@ -43,7 +43,7 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
             <Button
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:text="admin"
@@ -57,7 +57,7 @@
                 android:layout_marginBottom="30dp"
                 />
             <Button
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
 
                 android:textColor="#fff"
@@ -71,12 +71,12 @@
                 android:text="staff"
                 />
             <Button
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/black"
                 android:textColor="#fff"
                 android:id="@+id/student"
-                android:textSize="20sp"
+                android:textSize="23sp"
                 android:layout_marginTop="10dp"
                 android:textAllCaps="false"
 
