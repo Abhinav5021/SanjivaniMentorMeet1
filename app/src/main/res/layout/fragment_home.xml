@@ -1,75 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
+<androidx.appcompat.widget.AppCompatButton
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/addBatch"
+    android:textSize="20dp"
+    android:textAllCaps="false"
+    android:background="#4CAF50"
+    android:layout_marginBottom="20dp"
+    android:text="Add batch"/>
+    <androidx.appcompat.widget.AppCompatButton
+    android:layout_width="match_parent"
+        android:layout_below="@+id/addBatch"
+    android:layout_height="wrap_content"
+        android:id="@+id/showMentor"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginBottom="20dp"
+        android:background="#4CAF50"
+    android:text="show mentors"
+        />
 
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:drawableLeft="@drawable/ic_notification"
-            android:drawableRight="@drawable/ic_next"
-            android:text="Upcoming Meetings Updates" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_notification"
-            android:drawableRight="@drawable/ic_next"
-            android:text="__" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_notification"
-            android:drawableRight="@drawable/ic_next"
-            android:text="__" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_notification"
-            android:drawableRight="@drawable/ic_next"
-            android:text="__" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_notification"
-            android:drawableRight="@drawable/ic_next"
-            android:text="__" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_notification"
-            android:drawableRight="@drawable/ic_next"
-            android:text="__" />
+        android:layout_height="wrap_content"
+        android:text="Fetch Student"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:background="#4CAF50"
+        android:layout_below="@+id/showMentor"
+        />
 
 
-    </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>
